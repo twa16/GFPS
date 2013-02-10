@@ -1,0 +1,7 @@
+name: GFPS
+main: org.mgenterprises.java.bukkit.gfps.GFPS
+version: 0.1
+commands:
+  join:
+    description: Join a game
+    usage: /join [Game Name]
