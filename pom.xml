@@ -68,7 +68,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <finalName>${artifactId}-${version}-WithDeps</finalName>
+                    <finalName>${project.artifactId}-${project.version}-WithDeps</finalName>
                 </configuration>
             </plugin>
 
