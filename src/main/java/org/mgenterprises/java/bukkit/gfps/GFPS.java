@@ -19,7 +19,7 @@ public class GFPS extends JavaPlugin {
         Game g = new Game("test");
         FPSCore core = new FPSCore(g);
         GameManager gm = new GameManager(this);
-
+        gm.registerGame(g);
         GameManagementCommands gmcommand = new GameManagementCommands(gm);
         getCommand("join").setExecutor(gmcommand);
 
