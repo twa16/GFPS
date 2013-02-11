@@ -8,6 +8,7 @@ import org.mgenterprises.java.bukkit.gmcfps.Core.BasicCommands.GameManagementCom
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.Game;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.GameManager;
 import org.mgenterprises.java.bukkit.gmcfps.Core.Teams.Team;
+import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicSMG;
 
 /**
  *
@@ -29,6 +30,7 @@ public class GFPS extends JavaPlugin {
         
         gm.registerGame(g);
 
+        g.getFPSCore().getWeaponManager().registerWeapon(new BasicSMG(g.getFPSCore().getWeaponManager()));
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getCombatListener(), this);
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getWeaponListeners(), this);
     }
