@@ -22,7 +22,7 @@ public class GFPS extends JavaPlugin {
         GameManagementCommands gmcommand = new GameManagementCommands(gm);
         getCommand("join").setExecutor(gmcommand);
         
-        Game g = new Game("test");
+        Game g = new Game(this, "test");
         Team t1 = new Team("Team1");
         Team t2 = new Team("Team2");
         g.getFPSCore().getTeamManager().registerTeam(t1);
