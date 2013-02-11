@@ -8,6 +8,7 @@ import org.mgenterprises.java.bukkit.gmcfps.Core.BasicCommands.GameManagementCom
 import org.mgenterprises.java.bukkit.gmcfps.Core.FPSCore;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.Game;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.GameManager;
+import org.mgenterprises.java.bukkit.gmcfps.Core.Teams.Team;
 
 /**
  *
@@ -18,6 +19,8 @@ public class GFPS extends JavaPlugin {
     public void onEnable() {
         Game g = new Game("test");
         FPSCore core = new FPSCore(g);
+        core.getTeamManager().registerTeam(new Team("Team1"));
+        core.getTeamManager().registerTeam(new Team("Team2"));
         GameManager gm = new GameManager(this);
         gm.registerGame(g);
         GameManagementCommands gmcommand = new GameManagementCommands(gm);
