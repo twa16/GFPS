@@ -18,10 +18,11 @@ import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicSn
  */
 public class GFPS extends JavaPlugin {
 
-    GameManager gm = new GameManager(this);
+    GameManager gm;
 
     @Override
     public void onEnable() {
+        gm  = new GameManager(this);
         GameManagementCommands gmcommand = new GameManagementCommands(gm);
         getCommand("join").setExecutor(gmcommand);
 
