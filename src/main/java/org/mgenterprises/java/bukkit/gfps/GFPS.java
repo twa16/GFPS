@@ -18,12 +18,13 @@ import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicSn
  */
 public class GFPS extends JavaPlugin {
 
+    GameManager gm = new GameManager(this);
+
     @Override
     public void onEnable() {
-        GameManager gm = new GameManager(this);
         GameManagementCommands gmcommand = new GameManagementCommands(gm);
         getCommand("join").setExecutor(gmcommand);
-        
+
         Game g = new Game(this, "test");
         Team t1 = new Team("Team1");
         Team t2 = new Team("Team2");
@@ -33,7 +34,7 @@ public class GFPS extends JavaPlugin {
         g.getFPSCore().getWeaponManager().registerWeapon(new BasicSMG(g.getFPSCore().getWeaponManager()));
         g.getFPSCore().getWeaponManager().registerWeapon(new BasicSniper(g.getFPSCore().getWeaponManager()));
         g.getFPSCore().getWeaponManager().registerWeapon(new BasicRocketLauncher(g.getFPSCore().getWeaponManager()));
-        
+
         gm.registerGame(g);
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getCombatListener(), this);
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getWeaponListeners(), this);
@@ -41,6 +42,6 @@ public class GFPS extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("onDisable has been invoked!");
+        gm.saveAllGames();
     }
 }
