@@ -9,6 +9,7 @@ import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.Game;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.GameManager;
 import org.mgenterprises.java.bukkit.gmcfps.Core.Teams.Team;
 import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicSMG;
+import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicSniper;
 
 /**
  *
