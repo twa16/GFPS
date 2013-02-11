@@ -27,7 +27,7 @@ public class GFPS extends JavaPlugin {
         g.getFPSCore().getTeamManager().registerTeam(t1);
         g.getFPSCore().getTeamManager().registerTeam(t2);
         
-
+        gm.registerGame(g);
 
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getCombatListener(), this);
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getWeaponListeners(), this);
