@@ -25,6 +25,8 @@ public class GFPS extends JavaPlugin {
         GameManagementCommands gmcommand = new GameManagementCommands(gm);
         getCommand("join").setExecutor(gmcommand);
 
+        this.getDataFolder().mkdir();
+        
         Game g = new Game(this, "test");
         Team t1 = new Team("Team1");
         Team t2 = new Team("Team2");
