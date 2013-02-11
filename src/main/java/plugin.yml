@@ -5,3 +5,6 @@ commands:
   join:
     description: Join a game
     usage: /join [Game Name]
+  leave:
+    description: Leave the game
+    usage: /leave
