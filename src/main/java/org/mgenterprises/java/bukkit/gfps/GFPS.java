@@ -4,6 +4,7 @@
 package org.mgenterprises.java.bukkit.gfps;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mgenterprises.java.bukkit.gmcfps.Core.BasicCommands.CommandRegisterer;
 import org.mgenterprises.java.bukkit.gmcfps.Core.BasicCommands.GameManagementCommands;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.Game;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.GameManager;
@@ -25,8 +26,9 @@ public class GFPS extends JavaPlugin {
     public void onEnable() {
         gm  = new GameManager(this);
         GameManagementCommands gmcommand = new GameManagementCommands(gm);
-        getCommand("join").setExecutor(gmcommand);
+        CommandRegisterer cr = new CommandRegisterer(this, gm);
 
+        
         this.getDataFolder().mkdir();
         
         Game g = new Game(this, "test");
