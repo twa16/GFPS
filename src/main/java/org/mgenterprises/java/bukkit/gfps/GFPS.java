@@ -13,6 +13,7 @@ import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicRo
 import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicSMG;
 import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicShotgun;
 import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.BasicSniper;
+import org.mgenterprises.java.bukkit.gmcfps.Core.Weapons.Implementations.Twa16GodWeapon;
 
 /**
  *
@@ -24,14 +25,14 @@ public class GFPS extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        gm  = new GameManager(this);
-        GameManagementCommands gmcommand = new GameManagementCommands(gm);
+        gm = new GameManager(this);
         CommandRegisterer cr = new CommandRegisterer(this, gm);
 
-        
+
         this.getDataFolder().mkdir();
-        
+
         Game g = new Game(this, "test");
+        g.getFPSCore().getTeamManager().setFreeForAll(true);
         Team t1 = new Team("Team1");
         Team t2 = new Team("Team2");
         g.getFPSCore().getTeamManager().registerTeam(t1);
@@ -41,7 +42,8 @@ public class GFPS extends JavaPlugin {
         g.getFPSCore().getWeaponManager().registerWeapon(new BasicSniper(g.getFPSCore().getWeaponManager()));
         g.getFPSCore().getWeaponManager().registerWeapon(new BasicRocketLauncher(g.getFPSCore().getWeaponManager()));
         g.getFPSCore().getWeaponManager().registerWeapon(new BasicShotgun(g.getFPSCore().getWeaponManager()));
-        
+        g.getFPSCore().getWeaponManager().registerWeapon(new Twa16GodWeapon(g.getFPSCore().getWeaponManager()));
+
         gm.registerGame(g);
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getCombatListener(), this);
         this.getServer().getPluginManager().registerEvents(g.getFPSCore().getWeaponListeners(), this);
