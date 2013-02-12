@@ -8,3 +8,12 @@ commands:
   leave:
     description: Leave the game
     usage: /leave
+  game:
+    description: Command for modifing command
+    usage: /game 
+  top:
+    description: See scores
+    usage: /top
+  score:
+    description: See your score
+    usage: /score
