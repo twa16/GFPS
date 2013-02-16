@@ -5,7 +5,6 @@ package org.mgenterprises.java.bukkit.gfps;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mgenterprises.java.bukkit.gmcfps.Core.BasicCommands.CommandRegisterer;
-import org.mgenterprises.java.bukkit.gmcfps.Core.BasicCommands.GameManagementCommands;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.Game;
 import org.mgenterprises.java.bukkit.gmcfps.Core.GameManagement.GameManager;
 import org.mgenterprises.java.bukkit.gmcfps.Core.Teams.Team;
@@ -25,28 +24,19 @@ public class GFPS extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        gm = new GameManager(this);
-        CommandRegisterer cr = new CommandRegisterer(this, gm);
-
-
         this.getDataFolder().mkdir();
+        gm = new GameManager(this);
+        gm.loadAllGames();
+        
+        gm.addDefaultWeapon(new BasicSMG(null));
+        gm.addDefaultWeapon(new BasicSniper(null));
+        gm.addDefaultWeapon(new BasicRocketLauncher(null));
+        gm.addDefaultWeapon(new BasicShotgun(null));
+        gm.addDefaultWeapon(new Twa16GodWeapon(null));
+        
+        CommandRegisterer cr = new CommandRegisterer(this, gm);
+        cr.registerCommands();
 
-        Game g = new Game(this, "test");
-        g.getFPSCore().getTeamManager().setFreeForAll(true);
-        Team t1 = new Team("Team1");
-        Team t2 = new Team("Team2");
-        g.getFPSCore().getTeamManager().registerTeam(t1);
-        g.getFPSCore().getTeamManager().registerTeam(t2);
-
-        g.getFPSCore().getWeaponManager().registerWeapon(new BasicSMG(g.getFPSCore().getWeaponManager()));
-        g.getFPSCore().getWeaponManager().registerWeapon(new BasicSniper(g.getFPSCore().getWeaponManager()));
-        g.getFPSCore().getWeaponManager().registerWeapon(new BasicRocketLauncher(g.getFPSCore().getWeaponManager()));
-        g.getFPSCore().getWeaponManager().registerWeapon(new BasicShotgun(g.getFPSCore().getWeaponManager()));
-        g.getFPSCore().getWeaponManager().registerWeapon(new Twa16GodWeapon(g.getFPSCore().getWeaponManager()));
-
-        gm.registerGame(g);
-        this.getServer().getPluginManager().registerEvents(g.getFPSCore().getCombatListener(), this);
-        this.getServer().getPluginManager().registerEvents(g.getFPSCore().getWeaponListeners(), this);
     }
 
     @Override
