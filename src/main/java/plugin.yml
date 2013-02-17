@@ -17,3 +17,6 @@ commands:
   score:
     description: See your score
     usage: /score
+  weapons:
+    description: List guns enabled in game
+    usage: /weapons

@@ -26,13 +26,14 @@ public class GFPS extends JavaPlugin {
     public void onEnable() {
         this.getDataFolder().mkdir();
         gm = new GameManager(this);
-        gm.loadAllGames();
         
         gm.addDefaultWeapon(new BasicSMG(null));
         gm.addDefaultWeapon(new BasicSniper(null));
         gm.addDefaultWeapon(new BasicRocketLauncher(null));
         gm.addDefaultWeapon(new BasicShotgun(null));
         gm.addDefaultWeapon(new Twa16GodWeapon(null));
+        
+        gm.loadAllGames();
         
         CommandRegisterer cr = new CommandRegisterer(this, gm);
         cr.registerCommands();
